@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Парфумерія Воїна — Елітні аромати з характером</title>
+    <style>
+      :root {
+        --dark: #121110;
+        --dark-soft: #1a1916;
+        --dark-card: #22201d;
+        --gold: #d4af37;
+        --gold-hover: #e6c558;
+        --cream: #f4f1ea;
+        --white: #ffffff;
+        --text: #2c2a25;
+        --muted: #949085;
+        --border: rgba(212, 175, 55, 0.2);
+        --shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+          Arial, sans-serif;
+        background: var(--dark);
+        color: var(--cream);
+        line-height: 1.6;
+      }
+
+      /* HEADER */
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 6%;
+        background: rgba(18, 17, 16, 0.95);
+        backdrop-filter: blur(10px);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .logo {
+        color: var(--gold);
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-decoration: none;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+      }
+
+      nav a {
+        color: var(--cream);
+        text-decoration: none;
+        font-size: 13px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        transition: color 0.3s ease;
+      }
+
+      nav a:hover {
+        color: var(--gold);
+      }
+
+      .cart-btn {
+        background: none;
+        border: none;
+        font-size: 20px;
+        color: var(--gold);
+        cursor: pointer;
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .cart-badge {
+        position: absolute;
+        top: -8px;
+        right: -10px;
+        background: var(--gold);
+        color: var(--dark);
+        font-size: 10px;
+        font-weight: bold;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* HERO */
+      .hero {
+        min-height: 550px;
+        padding: 120px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background:
+          radial-gradient(
+            circle at center,
+            rgba(212, 175, 55, 0.12) 0%,
+            transparent 70%
+          ),
+          linear-gradient(135deg, #0d0c0b, #1e1c18, #0d0c0b);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .hero h1 {
+        font-size: clamp(34px, 5vw, 64px);
+        font-weight: 300;
+        letter-spacing: 4px;
+        margin-bottom: 20px;
+        color: var(--white);
+        text-transform: uppercase;
+      }
+
+      .hero p {
+        color: var(--muted);
+        font-size: 16px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 35px;
+      }
+
+      /* BUTTONS */
+      .btn {
+        display: inline-block;
+        padding: 14px 32px;
+        background: var(--gold);
+        color: var(--dark);
+        border: 1px solid var(--gold);
+        border-radius: 2px;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.35s ease;
+      }
+
+      .btn:hover {
+        background: transparent;
+        color: var(--gold);
+        transform: translateY(-2px);
+      }
+
+      .btn-outline {
+        background: transparent;
+        color: var(--gold);
+      }
+
+      .btn-outline:hover {
+        background: var(--gold);
+        color: var(--dark);
+      }
+
+      /* PRODUCT SHOWCASE (MAIN SECTION) */
+      .product-section {
+        padding: 100px 8%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .product-gallery {
+        background: var(--dark-soft);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        box-shadow: var(--shadow);
+      }
+
+      .product-gallery img {
+        width: 100%;
+        max-width: 320px;
+        height: 400px;
+        object-fit: contain;
+        filter: drop-shadow(0 20px 20px rgba(0, 0, 0, 0.5));
+        transition: transform 0.5s ease;
+      }
+
+      .product-gallery img:hover {
+        transform: scale(1.05);
+      }
+
+      .product-info h2 {
+        font-size: 38px;
+        font-weight: 300;
+        letter-spacing: 2px;
+        color: var(--white);
+        margin-bottom: 10px;
+      }
+
+      .brand-tag {
+        color: var(--gold);
+        font-size: 13px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        display: block;
+      }
+
+      .product-description {
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.8;
+        margin-bottom: 30px;
+      }
+
+      /* OPTIONS / SIZES */
+      .options-group {
+        margin-bottom: 25px;
+      }
+
+      .options-label {
+        font-size: 12px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 10px;
+        display: block;
+      }
+
+      .size-selector {
+        display: flex;
+        gap: 15px;
+      }
+
+      .size-btn {
+        background: var(--dark-soft);
+        border: 1px solid var(--border);
+        color: var(--cream);
+        padding: 10px 20px;
+        font-size: 13px;
+        cursor: pointer;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+      }
+
+      .size-btn.active,
+      .size-btn:hover {
+        border-color: var(--gold);
+        color: var(--gold);
+      }
+
+      .price-box {
+        font-size: 28px;
+        font-weight: 600;
+        color: var(--gold);
+        margin-bottom: 30px;
+        letter-spacing: 1px;
+      }
+
+      /* PYRAMID NOTES */
+      .notes-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-bottom: 35px;
+        padding: 20px;
+        background: var(--dark-card);
+        border-radius: 4px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .note-item h4 {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--gold);
+        margin-bottom: 5px;
+      }
+
+      .note-item p {
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      /* ABOUT & REVIEWS */
+      .about-section {
+        padding: 80px 10%;
+        background: var(--dark-soft);
+        text-align: center;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .about-section max-width {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .section-title {
+        font-size: 28px;
+        font-weight: 300;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 25px;
+        color: var(--white);
+      }
+
+      .about-section p {
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.9;
+        max-width: 750px;
+        margin: 0 auto;
+      }
+
+      /* CART DRAWER */
+      .cart-drawer {
+        position: fixed;
+        top: 0;
+        right: -400px;
+        width: 100%;
+        max-width: 380px;
+        height: 100vh;
+        background: var(--dark-card);
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        transition: right 0.4s ease;
+        display: flex;
+        flex-direction: column;
+        border-left: 1px solid var(--border);
+      }
+
+      .cart-drawer.open {
+        right: 0;
+      }
+
+      .cart-header {
+        padding: 20px 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .cart-header h3 {
+        font-size: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      .close-cart {
+        background: none;
+        border: none;
+        color: var(--cream);
+        font-size: 22px;
+        cursor: pointer;
+      }
+
+      .cart-body {
+        padding: 25px;
+        flex-grow: 1;
+        overflow-y: auto;
+      }
+
+      .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .cart-item-info h4 {
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+
+      .cart-item-info p {
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .cart-footer {
+        padding: 25px;
+        border-top: 1px solid var(--border);
+        background: var(--dark-soft);
+      }
+
+      .cart-total {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        font-size: 16px;
+        letter-spacing: 1px;
+      }
+
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(4px);
+        z-index: 999;
+        display: none;
+      }
+
+      .overlay.active {
+        display: block;
+      }
+
+      /* FOOTER */
+      footer {
+        padding: 40px 20px;
+        text-align: center;
+        background: var(--dark);
+        color: var(--muted);
+        font-size: 12px;
+        letter-spacing: 2px;
+        border-top: 1px solid var(--border);
+        text-transform: uppercase;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 900px) {
+        .product-section {
+          grid-template-columns: 1fr;
+          padding: 60px 5%;
+        }
+        .notes-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <a href="#" class="logo">Парфумерія Воїна</a>
+      <nav>
+        <a href="#catalog">Колекція</a>
+        <a href="#about">Про бренд</a>
+        <button class="cart-btn" onclick="toggleCart()">
+          🛒 <span class="cart-badge" id="cartCount">0</span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <h1>Аромат, що веде шляхом сили</h1>
+      <p>Характер. Енергія. Індивідуальність.</p>
+      <a href="#catalog" class="btn">Обрати аромат</a>
+    </section>
+
+    <!-- CATALOG / MAIN PRODUCT -->
+    <section class="catalog" id="catalog">
+      <div class="product-section">
+        <div class="product-gallery">
+          <!-- Використовуємо те саме якісне зображення флакона -->
+          <img src="image_8550e4.jpg" alt="Orto Parisi Perfume" />
+        </div>
+
+        <div class="product-info">
+          <span class="brand-tag">Orto Parisi — Ексклюзив</span>
+          <h2>Brut</h2>
+          <p class="product-description">
+            Тваринна сила, що пробуджує твою первісну енергію. Насичений,
+            глибокий та безкомпромісний шлейф для тих, хто звик перемагати.
+          </p>
+
+          <!-- Піраміда аромату -->
+          <div class="notes-grid">
+            <div class="note-item">
+              <h4>Верхні ноти</h4>
+              <p>Прянощі, Бергамот</p>
+            </div>
+            <div class="note-item">
+              <h4>Серце</h4>
+              <p>Шкіра, Деревина</p>
+            </div>
+            <div class="note-item">
+              <h4>База</h4>
+              <p>Мускус, Амбра</p>
+            </div>
+          </div>
+
+          <!-- Вибір об'єму -->
+          <div class="options-group">
+            <span class="options-label">Оберіть об'єм:</span>
+            <div class="size-selector">
+              <button
+                class="size-btn active"
+                onclick="changeSize(50, '6 900 грн', this)"
+              >
+                50 мл
+              </button>
+              <button
+                class="size-btn"
+                onclick="changeSize(100, '11 500 грн', this)"
+              >
+                100 мл
+              </button>
+            </div>
+          </div>
+
+          <div class="price-box" id="productPrice">6 900 грн</div>
+
+          <button class="btn" onclick="addToCart()">Додати в кошик</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about-section" id="about">
+      <h2 class="section-title">Філософія бренду</h2>
+      <p>
+        Ми створюємо простір для сильних духом. Кожен флакон у нашій колекції —
+        це втілення незламності, витривалості та глибокого внутрішнього стрижня.
+        Тільки селективна парфумерія для тих, хто обирає бути лідером у
+        будь-яких обставинах.
+      </p>
+    </section>
+
+    <!-- CART DRAWER -->
+    <div class="overlay" id="overlay" onclick="toggleCart()"></div>
+    <div class="cart-drawer" id="cartDrawer">
+      <div class="cart-header">
+        <h3>Кошик</h3>
+        <button class="close-cart" onclick="toggleCart()">&times;</button>
+      </div>
+      <div class="cart-body" id="cartBody">
+        <p style="color: var(--muted); text-align: center; margin-top: 40px">
+          Ваш кошик порожній
+        </p>
+      </div>
+      <div class="cart-footer" id="cartFooter" style="display: none">
+        <div class="cart-total">
+          <span>Загалом:</span>
+          <strong id="cartTotalPrice" style="color: var(--gold)">0 грн</strong>
+        </div>
+        <button
+          class="btn"
+          style="width: 100%; text-align: center"
+          onclick="checkout()"
+        >
+          Оформити замовлення
+        </button>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>&copy; 2026 Парфумерія Воїна. Усі права захищено.</p>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+      let currentProduct = {
+        name: "Brut — Orto Parisi",
+        size: "50 мл",
+        priceNum: 6900,
+        priceStr: "6 900 грн",
+      };
+
+      let cart = [];
+
+      function changeSize(ml, priceStr, btnElement) {
+        document
+          .querySelectorAll(".size-btn")
+          .forEach((btn) => btn.classList.remove("active"));
+        btnElement.classList.add("active");
+
+        currentProduct.size = ml + " мл";
+        currentProduct.priceStr = priceStr;
+        currentProduct.priceNum = ml === 50 ? 6900 : 11500;
+
+        document.getElementById("productPrice").innerText = priceStr;
+      }
+
+      function toggleCart() {
+        document.getElementById("cartDrawer").classList.toggle("open");
+        document.getElementById("overlay").classList.toggle("active");
+      }
+
+      function addToCart() {
+        cart.push({ ...currentProduct });
+        updateCartUI();
+        toggleCart();
+      }
+
+      function updateCartUI() {
+        const badge = document.getElementById("cartCount");
+        const cartBody = document.getElementById("cartBody");
+        const cartFooter = document.getElementById("cartFooter");
+        const totalPriceEl = document.getElementById("cartTotalPrice");
+
+        badge.innerText = cart.length;
+
+        if (cart.length === 0) {
+          cartBody.innerHTML =
+            '<p style="color: var(--muted); text-align: center; margin-top: 40px;">Ваш кошик порожній</p>';
+          cartFooter.style.display = "none";
+          return;
+        }
+
+        cartFooter.style.display = "block";
+        let total = 0;
+        let html = "";
+
+        cart.forEach((item, index) => {
+          total += item.priceNum;
+          html += `
+          <div class="cart-item">
+            <div class="cart-item-info">
+              <h4>${item.name}</h4>
+              <p>Об'єм: ${item.size}</p>
+              <p style="color: var(--gold); margin-top: 4px;">${item.priceStr}</p>
+            </div>
+            <button onclick="removeFromCart(${index})" style="background:none; border:none; color: var(--muted); cursor:pointer; font-size:16px;">&times;</button>
+          </div>
+        `;
+        });
+
+        cartBody.innerHTML = html;
+        totalPriceEl.innerText = total.toLocaleString() + " грн";
+      }
+
+      function removeFromCart(index) {
+        cart.splice(index, 1);
+        updateCartUI();
+      }
+
+      function checkout() {
+        alert(
+          "Дякуємо за замовлення! Наш менеджер зв'яжеться з вами для уточнення деталей доставки.",
+        );
+        cart = [];
+        updateCartUI();
+        toggleCart();
+      }
+    </script>
+  </body>
+</html>
